@@ -2,9 +2,9 @@ name: Dependency Check
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
@@ -32,15 +32,21 @@ jobs:
         run: mvn clean install
 
       - name: Run OWASP Dependency Check
-        run: mvn org.owasp:dependency-check-maven:check -Dformat=HTML -DoutputDirectory=reports
+        run: mvn org.owasp:dependency-check-maven:check
 
-     - name: Upload Report
-  uses: actions/upload-artifact@v4
-  with:
-    name: dependency-check-report
-    path: target/dependency-check-report.html
+      - name: Upload Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: dependency-check-report
+          path: target/dependency-check-report.html
 
 
 
-# Triggering workflow to check report again
+
+
+
+
+
+
+
 
