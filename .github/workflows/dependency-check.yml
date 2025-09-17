@@ -34,11 +34,12 @@ jobs:
       - name: Run OWASP Dependency Check
         run: mvn org.owasp:dependency-check-maven:check -Dformat=HTML -DoutputDirectory=reports
 
-      - name: Upload Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: dependency-check-report
-          path: reports
+
+- name: Upload Report
+  uses: actions/upload-artifact@v4
+  with:
+    name: dependency-check-report
+    path: target/dependency-check-report.html
 
 # Triggering workflow to check report again
 
